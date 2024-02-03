@@ -1,28 +1,33 @@
-﻿using _3S.CoDeSys.Core.ComponentModel;
+﻿using _3S.CoDeSys.Core;
+using _3S.CoDeSys.Core.ComponentModel;
 using System;
 
-static class APEnvironment
+namespace HelloWorld
 {
-    private static Lazy<DependencyBag> s_bag = new Lazy<DependencyBag>(() => new DependencyBag());
-    public static IEngine3 Engine
+    static class APEnvironment
     {
-        get { return s_bag.Value.EngineProvider.Value; }
+        private static Lazy<DependencyBag> s_bag = new Lazy<DependencyBag>(() => new DependencyBag());
+
+        public static IEngine3 Engine
+        {
+            get { return s_bag.Value.EngineProvider.Value; }
+        }
+
+        // more access methods and properties...
     }
 
-    // more access methods and properties...
-}
-
-class DependencyBag : IDependencyInjectable
-{
-    public DependencyBag() 
+    class DependencyBag : IDependencyInjectable
     {
-        ComponentModel.Singleton.InjectDependencies(this, GetType()); 
+        public DependencyBag()
+        {
+            ComponentModel.Singleton.InjectDependencies(this, GetType());
+        }
+
+        public void InjectionComplete() { }
+
+        [InjectSingleInstance(Shared = true)]
+        public ISharedSingleInstanceProvider<IEngine3> EngineProvider { get; private set; }
+
+        // more dependencies...
     }
-
-    public void InjectionComplete() { }
-
-    [InjectSingleInstance(Shared = true)]
-    public ISharedSingleInstanceProvider<IEngine3> EngineProvider { get; private set; }
-
-    // more dependencies...
 }

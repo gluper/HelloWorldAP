@@ -43,6 +43,12 @@
     <Reference Include="ComponentModelWin">
       <HintPath>..\..\..\..\CODESYS Automation Platform SDK V3.5.19.50\SDK\Interfaces\ComponentModelWin.dll</HintPath>
     </Reference>
+    <Reference Include="Engine">
+      <HintPath>..\..\..\..\CODESYS Automation Platform SDK V3.5.19.50\SDK\Interfaces\Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="EngineWin">
+      <HintPath>..\..\..\..\CODESYS Automation Platform SDK V3.5.19.50\SDK\Interfaces\EngineWin.dll</HintPath>
+    </Reference>
     <Reference Include="Objects">
       <HintPath>..\..\..\..\CODESYS Automation Platform SDK V3.5.19.50\SDK\Interfaces\Objects.dll</HintPath>
     </Reference>
@@ -62,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command.cs" />
+    <Compile Include="Dependencies.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource.Designer.cs">
       <AutoGen>True</AutoGen>
